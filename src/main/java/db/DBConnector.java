@@ -8,7 +8,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class DBConnector {
 
-    private static final Dotenv dotenv = Dotenv.load();
+    private static final Dotenv dotenv = Dotenv.load(); // dotenv reference
 
     private Connection connection;
     private static DBConnector instance;
