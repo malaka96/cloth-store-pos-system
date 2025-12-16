@@ -76,7 +76,7 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <ScrollPane fx:id="productPane" layoutX="219.0" layoutY="22.0" prefHeight="664.0" prefWidth="963.0" visible="false">
+      <ScrollPane fx:id="productPane" layoutX="219.0" layoutY="22.0" prefHeight="664.0" prefWidth="963.0">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="647.0" prefWidth="958.0">
                <children>
@@ -90,6 +90,31 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
+                  <TableView fx:id="productTable" layoutX="35.0" layoutY="143.0" prefHeight="471.0" prefWidth="554.0">
+                     <columns>
+                        <TableColumn fx:id="tpName" prefWidth="279.20006942749023" text="Name" />
+                        <TableColumn fx:id="tpCategory" prefWidth="139.99993896484375" text="Category" />
+                        <TableColumn fx:id="tpPrice" minWidth="0.0" prefWidth="137.60003662109375" text="IsActive" />
+                     </columns>
+                  </TableView>
+                  <Text layoutX="764.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="👔" wrappingWidth="69.3367919921875">
+                     <font>
+                        <Font size="43.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="683.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                  <TextField fx:id="productNameTf" layoutX="737.0" layoutY="200.0" prefHeight="26.0" prefWidth="173.0" />
+                  <Text layoutX="683.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
+                  <TextField fx:id="productCategoryTf" layoutX="737.0" layoutY="237.0" prefHeight="26.0" prefWidth="173.0" />
+                  <Text layoutX="683.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" />
+                  <TextField fx:id="productPriceTf" layoutX="737.0" layoutY="276.0" prefHeight="26.0" prefWidth="173.0" />
+                  <Text layoutX="683.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Qty" />
+                  <TextField fx:id="productStockTf" layoutX="737.0" layoutY="310.0" prefHeight="26.0" prefWidth="173.0" />
+                  <CheckBox fx:id="productIsActive" layoutX="737.0" layoutY="346.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="127.0" />
+                  <Text layoutX="683.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Is Active" />
+                  <Button fx:id="addProductBtn" layoutX="672.0" layoutY="390.0" mnemonicParsing="false" onAction="#addProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Add" />
+                  <Button fx:id="updateProductBtn" layoutX="764.0" layoutY="390.0" mnemonicParsing="false" onAction="#updateProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Update" />
+                  <Button fx:id="deleteProductBtn" layoutX="858.0" layoutY="390.0" mnemonicParsing="false" onAction="#deleteProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Delete" />
                </children>
             </AnchorPane>
          </content>
