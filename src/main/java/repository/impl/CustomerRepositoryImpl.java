@@ -57,4 +57,13 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         String sql = "select CustName, Phone, Email, Address, is_active from customers";
         return connect.prepareStatement(sql).executeQuery();
     }
+
+    @Override
+    public ResultSet searchCustomer(String phone) throws SQLException {
+        Connection connection = DBConnector.getInstance().getConnection();
+        String sql = "select CustName, Phone, Email, Address, is_active from customers where Phone = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setObject(1,phone);
+        return preparedStatement.executeQuery();
+    }
 }

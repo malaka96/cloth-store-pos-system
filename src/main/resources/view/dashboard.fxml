@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="productBtn1" layoutX="56.0" layoutY="265.0" mnemonicParsing="false" onAction="#productBtnAction" prefHeight="34.0" prefWidth="127.0" text="Billing ">
+            <Button fx:id="billingBtn" layoutX="56.0" layoutY="265.0" mnemonicParsing="false" onAction="#billingBtnAction" prefHeight="34.0" prefWidth="127.0" text="Billing ">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -107,24 +107,26 @@
                         <Font size="43.0" />
                      </font>
                   </Text>
-                  <Text layoutX="683.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-                  <TextField fx:id="productNameTf" layoutX="737.0" layoutY="200.0" prefHeight="26.0" prefWidth="173.0" />
-                  <Text layoutX="683.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
-                  <TextField fx:id="productCategoryTf" layoutX="737.0" layoutY="237.0" prefHeight="26.0" prefWidth="173.0" />
-                  <Text layoutX="683.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" />
-                  <TextField fx:id="productPriceTf" layoutX="737.0" layoutY="276.0" prefHeight="26.0" prefWidth="173.0" />
-                  <Text layoutX="683.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Qty" />
-                  <TextField fx:id="productStockTf" layoutX="737.0" layoutY="310.0" prefHeight="26.0" prefWidth="173.0" />
-                  <CheckBox fx:id="productIsActive" layoutX="737.0" layoutY="346.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="127.0" />
-                  <Text layoutX="683.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Is Active" />
-                  <Button fx:id="addProductBtn" layoutX="672.0" layoutY="390.0" mnemonicParsing="false" onAction="#addProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Add" />
-                  <Button fx:id="updateProductBtn" layoutX="764.0" layoutY="390.0" mnemonicParsing="false" onAction="#updateProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Update" />
-                  <Button fx:id="deleteProductBtn" layoutX="858.0" layoutY="390.0" mnemonicParsing="false" onAction="#deleteProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Delete" />
+                  <Text layoutX="685.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                  <TextField fx:id="productNameTf" layoutX="739.0" layoutY="241.0" prefHeight="26.0" prefWidth="173.0" />
+                  <Text layoutX="685.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
+                  <TextField fx:id="productCategoryTf" layoutX="739.0" layoutY="278.0" prefHeight="26.0" prefWidth="173.0" />
+                  <Text layoutX="685.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" />
+                  <TextField fx:id="productPriceTf" layoutX="739.0" layoutY="317.0" prefHeight="26.0" prefWidth="173.0" />
+                  <Text layoutX="685.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Qty" />
+                  <TextField fx:id="productStockTf" layoutX="739.0" layoutY="351.0" prefHeight="26.0" prefWidth="173.0" />
+                  <CheckBox fx:id="productIsActive" layoutX="739.0" layoutY="387.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="127.0" />
+                  <Text layoutX="685.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Is Active" />
+                  <Button fx:id="addProductBtn" layoutX="672.0" layoutY="424.0" mnemonicParsing="false" onAction="#addProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Add" />
+                  <Button fx:id="updateProductBtn" layoutX="764.0" layoutY="424.0" mnemonicParsing="false" onAction="#updateProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Update" />
+                  <Button fx:id="deleteProductBtn" layoutX="858.0" layoutY="424.0" mnemonicParsing="false" onAction="#deleteProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Delete" />
+                  <Text layoutX="685.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Barcode" />
+                  <TextField fx:id="productBarcodeTf" layoutX="739.0" layoutY="202.0" prefHeight="26.0" prefWidth="173.0" />
                </children>
             </AnchorPane>
          </content>
       </ScrollPane>
-      <ScrollPane fx:id="productPane1" layoutX="219.0" layoutY="22.0" prefHeight="664.0" prefWidth="963.0">
+      <ScrollPane fx:id="billingPane" layoutX="219.0" layoutY="22.0" prefHeight="664.0" prefWidth="963.0">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="647.0" prefWidth="958.0">
                <children>
@@ -138,38 +140,91 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TableView fx:id="productTable1" layoutX="35.0" layoutY="292.0" prefHeight="322.0" prefWidth="554.0">
+                  <TableView fx:id="billingProductTable" layoutX="35.0" layoutY="292.0" prefHeight="322.0" prefWidth="607.0">
                      <columns>
-                        <TableColumn fx:id="tpName1" prefWidth="279.20006942749023" text="Name" />
-                        <TableColumn fx:id="tpCategory1" prefWidth="139.99993896484375" text="Category" />
-                        <TableColumn fx:id="tpPrice1" minWidth="0.0" prefWidth="137.60003662109375" text="IsActive" />
+                        <TableColumn fx:id="tbName" prefWidth="244.80004501342773" text="Name" />
+                        <TableColumn fx:id="tbUnitPrice" prefWidth="127.99993896484375" text="Unit Price" />
+                        <TableColumn fx:id="tbQty" minWidth="0.0" prefWidth="102.4000244140625" text="Quantity" />
+                        <TableColumn fx:id="tbTotal" prefWidth="135.9998779296875" text="Total" />
                      </columns>
                   </TableView>
-                  <Text layoutX="764.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="👔" wrappingWidth="69.3367919921875">
-                     <font>
-                        <Font size="43.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="683.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-                  <TextField fx:id="productNameTf1" layoutX="737.0" layoutY="200.0" prefHeight="26.0" prefWidth="173.0" />
-                  <Text layoutX="683.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
-                  <TextField fx:id="productCategoryTf1" layoutX="737.0" layoutY="237.0" prefHeight="26.0" prefWidth="173.0" />
-                  <Text layoutX="683.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" />
-                  <TextField fx:id="productPriceTf1" layoutX="737.0" layoutY="276.0" prefHeight="26.0" prefWidth="173.0" />
-                  <Text layoutX="683.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Qty" />
-                  <TextField fx:id="productStockTf1" layoutX="737.0" layoutY="310.0" prefHeight="26.0" prefWidth="173.0" />
-                  <CheckBox fx:id="productIsActive1" layoutX="737.0" layoutY="346.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="127.0" />
-                  <Text layoutX="683.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Is Active" />
-                  <Button fx:id="addProductBtn1" layoutX="349.0" layoutY="157.0" mnemonicParsing="false" onAction="#addProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Add" />
-                  <Button fx:id="updateProductBtn1" layoutX="764.0" layoutY="390.0" mnemonicParsing="false" onAction="#updateProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Update" />
-                  <Button fx:id="deleteProductBtn1" layoutX="858.0" layoutY="390.0" mnemonicParsing="false" onAction="#deleteProductBtnAction" prefHeight="26.0" prefWidth="85.0" text="Delete" />
+                  <Button fx:id="billingBarcodeEnterBtn" layoutX="347.0" layoutY="134.0" mnemonicParsing="false" onAction="#billingBarcodeEnterBtnAction" prefHeight="26.0" prefWidth="105.0" text="Enter" />
                   <Text layoutX="35.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cart Items" wrappingWidth="325.33668518066406">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="35.0" layoutY="158.0" prefHeight="26.0" prefWidth="294.0" />
-                  <Text layoutX="35.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scan or Enter Barcode" wrappingWidth="325.33668518066406">
+                  <TextField fx:id="billingBarcodeTf" layoutX="35.0" layoutY="134.0" prefHeight="26.0" prefWidth="302.0" />
+                  <Text layoutX="35.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scan or Enter Barcode" wrappingWidth="325.33668518066406">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="billingStockTf" editable="false" layoutX="221.0" layoutY="192.0" prefHeight="26.0" prefWidth="54.0" />
+                  <Text layoutX="221.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Qty" wrappingWidth="62.936767578125">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="billingBuyStockTf" layoutX="287.0" layoutY="192.0" prefHeight="26.0" prefWidth="50.0" />
+                  <Text layoutX="289.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buy Qty" wrappingWidth="74.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="billingProductNameTf" editable="false" layoutX="35.0" layoutY="192.0" prefHeight="26.0" prefWidth="177.0" />
+                  <Text layoutX="35.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name" wrappingWidth="90.936767578125">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="billingProductAddBtn" layoutX="35.0" layoutY="231.0" mnemonicParsing="false" onAction="#billingProductAddBtnAction" prefHeight="26.0" prefWidth="85.0" text="Add" />
+                  <Button fx:id="billingProductRemoveBtn" layoutX="135.0" layoutY="231.0" mnemonicParsing="false" onAction="#billingProductRemoveBtnAction" prefHeight="26.0" prefWidth="85.0" text="Remove" />
+                  <Text layoutX="681.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oder Summary" wrappingWidth="182.93666076660156">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="681.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sub total" wrappingWidth="77.3367919921875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="billingSubTotalTf" editable="false" layoutX="745.0" layoutY="348.0" prefHeight="26.0" prefWidth="182.0" />
+                  <Text layoutX="681.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount" wrappingWidth="65.3367919921875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="billingDiscountTf" layoutX="746.0" layoutY="383.0" prefHeight="26.0" prefWidth="181.0" />
+                  <Button fx:id="billingCalculateTotalBtn" layoutX="681.0" layoutY="430.0" mnemonicParsing="false" onAction="#billingCalculateTotalBtnAction" prefHeight="26.0" prefWidth="245.0" text="Calculate Total" />
+                  <Text layoutX="681.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="65.3367919921875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="billingFinalTotalTf" editable="false" layoutX="748.0" layoutY="470.0" prefHeight="26.0" prefWidth="177.0" />
+                  <Button fx:id="addProductBtn1121" layoutX="681.0" layoutY="508.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="245.0" text="Complete Payment" />
+                  <Text layoutX="748.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="eg: 5% = 5" wrappingWidth="74.1368408203125">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="618.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Customer Phone Number" wrappingWidth="229.33668518066406">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="billingCusPhoneTf" layoutX="618.0" layoutY="134.0" prefHeight="26.0" prefWidth="180.0" />
+                  <Button fx:id="billingCusSearchBtn" layoutX="811.0" layoutY="134.0" mnemonicParsing="false" onAction="#billingCusSearchBtnAction" prefHeight="26.0" prefWidth="85.0" text="Search" />
+                  <TextField fx:id="billingCusNameTf" editable="false" layoutX="618.0" layoutY="192.0" prefHeight="26.0" prefWidth="180.0" />
+                  <Text layoutX="617.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Name" wrappingWidth="127.19999999999996">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="billingProductUnitPrice" layoutX="347.0" layoutY="192.0" prefHeight="26.0" prefWidth="106.0" />
+                  <Text layoutX="347.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Price" wrappingWidth="74.13671875">
                      <font>
                         <Font size="14.0" />
                      </font>

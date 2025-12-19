@@ -11,5 +11,6 @@ public interface CustomerService {
     void update(String name, String phone, String email, String address, int isActive) throws SQLException;
     void add(String name, String phone, String email, String address, int isActive) throws SQLException;
     void delete(String phone) throws SQLException;
+    Customer searchCustomer(String phone) throws SQLException;
 
 }

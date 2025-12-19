@@ -11,30 +11,32 @@ import java.sql.SQLException;
 public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
-    public void add(String name, String category, Double price, int stockQty, int isActive) throws SQLException {
+    public void add(String name, String category, Double price, int stockQty, int isActive, String barcode) throws SQLException {
         Connection connection = DBConnector.getInstance().getConnection();
-        String sql = "Insert into products (ProductName, Category, Price, StockQty, is_active) values (?,?,?,?,?)";
+        String sql = "Insert into products (ProductName, Category, Price, StockQty, is_active, Barcode) values (?,?,?,?,?,?)";
         try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
             preparedStatement.setObject(1,name);
             preparedStatement.setObject(2,category);
             preparedStatement.setObject(3,price);
             preparedStatement.setObject(4,stockQty);
             preparedStatement.setObject(5,isActive);
+            preparedStatement.setObject(5,barcode);
             preparedStatement.executeUpdate();
         }
     }
 
     @Override
-    public void update(String name, String category, Double price, int stockQty, int isActive) throws SQLException {
+    public void update(String name, String category, Double price, int stockQty, int isActive, String barcode) throws SQLException {
         Connection connection = DBConnector.getInstance().getConnection();
-        String sql = "Update products set ProductName = ?, Category = ?, Price = ?, StockQty = ?, is_active = ? where ProductName = ?";
+        String sql = "Update products set ProductName = ?, Category = ?, Price = ?, StockQty = ?, is_active = ?, Barcode = ? where Barcode = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
             preparedStatement.setObject(1,name);
             preparedStatement.setObject(2,category);
             preparedStatement.setObject(3,price);
             preparedStatement.setObject(4,stockQty);
             preparedStatement.setObject(5,isActive);
-            preparedStatement.setObject(6,name);
+            preparedStatement.setObject(6,barcode);
+            preparedStatement.setObject(7,barcode);
             preparedStatement.executeUpdate();
         }
     }
@@ -52,7 +54,17 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public ResultSet getAll() throws SQLException {
         Connection connection = DBConnector.getInstance().getConnection();
-        String sql = "Select ProductName, Category, Price, StockQty, is_active from products";
+        String sql = "Select ProductName, Category, Price, StockQty, is_active, Barcode from products";
         return connection.prepareStatement(sql).executeQuery();
     }
+
+    @Override
+    public ResultSet searchProduct(String barcode) throws SQLException {
+        Connection connection = DBConnector.getInstance().getConnection();
+        String sql = "Select ProductName, Category, Price, StockQty, is_active, Barcode from products where Barcode = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setObject(1, barcode);
+        return  preparedStatement.executeQuery();
+    }
+
 }

@@ -41,4 +41,18 @@ public class CustomerServiceImple implements CustomerService {
     public void delete(String phone) throws SQLException {
         customerRepository.delete(phone);
     }
+
+    @Override
+    public Customer searchCustomer(String phone) throws SQLException {
+        ResultSet resultSet = customerRepository.searchCustomer(phone);
+        Customer customer = null;
+        if(resultSet.next()){
+            customer = new Customer(resultSet.getString("CustName"),
+                    resultSet.getString("Phone"),
+                    resultSet.getString("Email"),
+                    resultSet.getString("Address"),
+                    resultSet.getInt("is_active"));
+        }
+        return customer;
+    }
 }

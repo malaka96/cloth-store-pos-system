@@ -9,5 +9,6 @@ public interface CustomerRepository {
     void update(String name, String phone, String email, String address, int isActive) throws SQLException;
     void delete(String phone) throws SQLException;
     ResultSet getAll() throws SQLException;
+    ResultSet searchCustomer(String phone) throws SQLException;
 
 }
