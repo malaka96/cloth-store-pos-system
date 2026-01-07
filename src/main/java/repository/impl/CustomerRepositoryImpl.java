@@ -66,4 +66,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         preparedStatement.setObject(1,phone);
         return preparedStatement.executeQuery();
     }
+
+    @Override
+    public int getCustomerCount() throws SQLException {
+        Connection connection = DBConnector.getInstance().getConnection();
+        String sql = "select count(*) from customers";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }
+        }
+        return 0;
+    }
 }

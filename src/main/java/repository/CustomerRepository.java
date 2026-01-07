@@ -10,5 +10,6 @@ public interface CustomerRepository {
     void delete(String phone) throws SQLException;
     ResultSet getAll() throws SQLException;
     ResultSet searchCustomer(String phone) throws SQLException;
+    int getCustomerCount() throws SQLException;
 
 }

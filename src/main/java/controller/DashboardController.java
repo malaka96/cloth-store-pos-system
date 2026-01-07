@@ -106,6 +106,12 @@ public class DashboardController implements Initializable {
     private TextField customerTotalSpentTf;
 
     @FXML
+    private Button dashboardBtn;
+
+    @FXML
+    private ScrollPane dashboardPane;
+
+    @FXML
     private TextField productBarcodeTf;
 
     @FXML
@@ -126,8 +132,6 @@ public class DashboardController implements Initializable {
     @FXML
     private Button customerUpdateBtn;
 
-    @FXML
-    private Button dashboardBtn;
 
     @FXML
     private Button deleteProductBtn;
@@ -140,6 +144,12 @@ public class DashboardController implements Initializable {
 
     @FXML
     private ScrollPane productPane;
+
+    @FXML
+    private TextField totalCustomerTf;
+
+    @FXML
+    private TextField totalItemTf;
 
     @FXML
     private TableColumn<?, ?> tbName;
@@ -259,6 +269,7 @@ public class DashboardController implements Initializable {
     void customerBtnAction(ActionEvent event) {
         productPane.setVisible(false);
         billingPane.setVisible(false);
+        dashboardPane.setVisible(false);
         customerPane.setVisible(true);
     }
 
@@ -266,17 +277,22 @@ public class DashboardController implements Initializable {
     void productBtnAction(ActionEvent event) {
         customerPane.setVisible(false);
         billingPane.setVisible(false);
+        dashboardPane.setVisible(false);
         productPane.setVisible(true);
     }
 
     public void billingBtnAction(ActionEvent actionEvent) {
         productPane.setVisible(false);
         customerPane.setVisible(false);
+        dashboardPane.setVisible(false);
         billingPane.setVisible(true);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        loadDashboard();
+
         tcName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tcPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         tcIsActive.setCellValueFactory(new PropertyValueFactory<>("isActive"));
@@ -460,4 +476,27 @@ public class DashboardController implements Initializable {
             alert.showAndWait();
         }
     }
+
+   // -------------------- dashboard -----------------------------------
+
+    public void dashboardBtnAction(ActionEvent actionEvent) {
+        customerPane.setVisible(false);
+        billingPane.setVisible(false);
+        productPane.setVisible(false);
+        dashboardPane.setVisible(true);
+
+        loadDashboard();
+    }
+
+    private void loadDashboard(){
+        try {
+            totalItemTf.setText(String.valueOf(productService.getProductCount()));
+            totalCustomerTf.setText(String.valueOf(customerService.getCustomerCount()));
+        } catch (SQLException e) {
+            totalCustomerTf.setText(String.valueOf(0));
+            totalItemTf.setText(String.valueOf(0));
+
+        }
+    }
+
 }

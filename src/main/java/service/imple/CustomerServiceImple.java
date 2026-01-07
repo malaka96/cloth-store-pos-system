@@ -55,4 +55,10 @@ public class CustomerServiceImple implements CustomerService {
         }
         return customer;
     }
+
+    @Override
+    public int getCustomerCount() throws SQLException {
+        return customerRepository.getCustomerCount();
+    }
+
 }

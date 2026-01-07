@@ -9,4 +9,5 @@ public interface ProductRepository {
     void delete(String name) throws SQLException;
     ResultSet getAll() throws SQLException;
     ResultSet searchProduct(String barcode) throws SQLException;
+    int getProductCount() throws SQLException;
 }

@@ -67,4 +67,16 @@ public class ProductRepositoryImpl implements ProductRepository {
         return  preparedStatement.executeQuery();
     }
 
+    @Override
+    public int getProductCount() throws SQLException {
+        Connection connection = DBConnector.getInstance().getConnection();
+        String sql = "Select count(*) from products";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }
+        }
+        return 0;
+    }
 }

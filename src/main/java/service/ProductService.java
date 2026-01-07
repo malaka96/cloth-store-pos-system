@@ -11,5 +11,7 @@ public interface ProductService {
     void delete(String name) throws SQLException;
     ObservableList<Product> getAll() throws SQLException;
     Product searchProduct(String barcode) throws SQLException;
+    int getProductCount() throws SQLException;
+
 
 }

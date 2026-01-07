@@ -60,4 +60,9 @@ public class ProductServiceImple implements ProductService {
         resultSet.close();
         return product;
     }
+
+    @Override
+    public int getProductCount() throws SQLException {
+        return productRepository.getProductCount();
+    }
 }
