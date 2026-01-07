@@ -4,5 +4,5 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public interface UserRepository {
-    ResultSet getUser(String email) throws SQLException;
+    ResultSet getUser(String email, String password) throws SQLException;
 }

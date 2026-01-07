@@ -12,8 +12,8 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository = new UserRepositoryImpl();
 
     @Override
-    public boolean isUserExisted(String email) throws SQLException {
-        ResultSet resultSet = userRepository.getUser(email);
+    public boolean isUserExisted(String email, String password) throws SQLException {
+        ResultSet resultSet = userRepository.getUser(email,password);
         return resultSet.next();
     }
 }

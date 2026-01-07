@@ -11,12 +11,13 @@ import java.sql.SQLException;
 public class UserRepositoryImpl implements UserRepository {
 
     @Override
-    public ResultSet getUser(String email) throws SQLException {
+    public ResultSet getUser(String email, String password) throws SQLException {
         Connection connection = DBConnector.getInstance().getConnection();
-        String sql = "select email, password from users where email = ?";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
-            preparedStatement.setObject(1,email);
-            return preparedStatement.executeQuery();
-        }
+        String sql = "select email, password from users where email = ? and password = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setObject(1, email);
+        preparedStatement.setObject(2, password);
+        return preparedStatement.executeQuery();
+
     }
 }

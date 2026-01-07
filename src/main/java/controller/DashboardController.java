@@ -13,8 +13,10 @@ import model.dto.Product;
 import org.w3c.dom.Text;
 import service.CustomerService;
 import service.ProductService;
+import service.UserService;
 import service.imple.CustomerServiceImple;
 import service.imple.ProductServiceImple;
+import service.imple.UserServiceImpl;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -206,6 +208,7 @@ public class DashboardController implements Initializable {
 
     final CustomerService customerService = new CustomerServiceImple();
     final ProductService productService = new ProductServiceImple();
+    final UserService userService = new UserServiceImpl();
     ObservableList<Customer> allCustomers;
     ObservableList<BillingProduct> billingProducts = javafx.collections.FXCollections.observableArrayList();
 
@@ -464,7 +467,7 @@ public class DashboardController implements Initializable {
         }
     }
 
-    public void calculateBillingTotal(){
+    public void calculateBillingTotal() {
         double total = billingProducts.stream()
                 .mapToDouble(BillingProduct::getTotalPrice) // p -> p.getTotalPrice()
                 .sum();
@@ -473,16 +476,16 @@ public class DashboardController implements Initializable {
     }
 
     public void billingCalculateTotalBtnAction(ActionEvent actionEvent) {
-        double finalTotal =Double.parseDouble(billingSubTotalTf.getText()) - ((Double.parseDouble(billingSubTotalTf.getText())
+        double finalTotal = Double.parseDouble(billingSubTotalTf.getText()) - ((Double.parseDouble(billingSubTotalTf.getText())
                 * Double.parseDouble(billingDiscountTf.getText())) / 100);
         billingFinalTotalTf.setText(String.valueOf(finalTotal));
     }
 
     public void billingCusSearchBtnAction(ActionEvent actionEvent) {
-        try{
+        try {
             Customer customer = customerService.searchCustomer(billingCusPhoneTf.getText());
             billingCusNameTf.setText(customer.getName());
-        }catch (SQLException e){
+        } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Customer Search");
             alert.setHeaderText(null);
@@ -491,7 +494,7 @@ public class DashboardController implements Initializable {
         }
     }
 
-   // -------------------- dashboard -----------------------------------
+    // -------------------- dashboard -----------------------------------
 
     public void dashboardBtnAction(ActionEvent actionEvent) {
         customerPane.setVisible(false);
@@ -502,7 +505,7 @@ public class DashboardController implements Initializable {
         loadDashboard();
     }
 
-    private void loadDashboard(){
+    private void loadDashboard() {
         try {
             totalItemTf.setText(String.valueOf(productService.getProductCount()));
             totalCustomerTf.setText(String.valueOf(customerService.getCustomerCount()));
@@ -517,6 +520,26 @@ public class DashboardController implements Initializable {
 
     public void loginBtnAction(ActionEvent actionEvent) {
 
+        String email = loginEmailTf.getText();
+        String password = loginPasswordTf.getText();
+
+        try {
+            if (userService.isUserExisted(email, password)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Login success");
+                alert.setHeaderText(null);
+                alert.setContentText("You are logged in as a cashier");
+                alert.showAndWait();
+            }else{
+                throw new  SQLException("Invalid credentials");
+            }
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Invalid credential");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
 
     }
 
