@@ -516,7 +516,8 @@ public class DashboardController implements Initializable {
     // ------------- login page ------------------
 
     public void loginBtnAction(ActionEvent actionEvent) {
-        System.out.println("hi from login button");
+
+
     }
 
     public void loginFPOnMouse(MouseEvent mouseEvent) {
