@@ -6,9 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.dto.BillingProduct;
 import model.dto.Customer;
 import model.dto.Product;
+import org.w3c.dom.Text;
 import service.CustomerService;
 import service.ProductService;
 import service.imple.CustomerServiceImple;
@@ -110,6 +112,18 @@ public class DashboardController implements Initializable {
 
     @FXML
     private ScrollPane dashboardPane;
+
+    @FXML
+    private Button loginBtn;
+
+    @FXML
+    private TextField loginEmailTf;
+
+    @FXML
+    private Text loginFP;
+
+    @FXML
+    private PasswordField loginPasswordTf;
 
     @FXML
     private TextField productBarcodeTf;
@@ -499,4 +513,13 @@ public class DashboardController implements Initializable {
         }
     }
 
+    // ------------- login page ------------------
+
+    public void loginBtnAction(ActionEvent actionEvent) {
+        System.out.println("hi from login button");
+    }
+
+    public void loginFPOnMouse(MouseEvent mouseEvent) {
+
+    }
 }
