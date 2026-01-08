@@ -125,6 +125,15 @@ public class DashboardController implements Initializable {
     private Button forgotSendBtn;
 
     @FXML
+    private TextField forgotCodeEmailTf;
+
+    @FXML
+    private Button forgotCodeEnterBtn;
+
+    @FXML
+    private ScrollPane forgotCodePane;
+
+    @FXML
     private Button loginBtn;
 
     @FXML
@@ -570,14 +579,24 @@ public class DashboardController implements Initializable {
     }
 
 
-    // ----------- forgot password page ----------
+    // ----------- forgot password ----------
 
     public void forgotSendBtnAction(ActionEvent actionEvent) {
-
+        forgotPane.setVisible(false);
+        forgotCodePane.setVisible(true);
     }
 
     public void forgotBackBtnOnMouse(MouseEvent mouseEvent) {
         forgotPane.setVisible(false);
         loginPane.setVisible(true);
+    }
+
+    public void forgotCodeEnterBtnAction(ActionEvent actionEvent) {
+    }
+
+
+    public void forgotCodeBackOnMouse(MouseEvent mouseEvent) {
+        forgotCodePane.setVisible(false);
+        forgotPane.setVisible(true);
     }
 }
