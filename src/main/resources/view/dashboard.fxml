@@ -345,5 +345,26 @@
             </AnchorPane>
          </content>
       </ScrollPane>
+      <ScrollPane fx:id="forgotNewPSPane" layoutX="222.0" layoutY="22.0" prefHeight="664.0" prefWidth="963.0" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="647.0" prefWidth="958.0">
+               <children>
+                  <Text layoutX="165.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password" wrappingWidth="264.7999755859375">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="forgotNewPSEmailTf" layoutX="164.0" layoutY="272.0" prefHeight="26.0" prefWidth="328.0" />
+                  <Text layoutX="165.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new password" wrappingWidth="325.33668518066406">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="forgotNewPSEnterBtn" layoutX="164.0" layoutY="324.0" mnemonicParsing="false" onAction="#forgotNewPSEnterBtnAction" prefHeight="26.0" prefWidth="327.0" text="Enter" />
+                  <Text fill="BLUE" layoutX="164.0" layoutY="372.0" onMouseClicked="#forgotNewPSBackOnMouse" strokeType="OUTSIDE" strokeWidth="0.0" text="back" wrappingWidth="29.33673095703125" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

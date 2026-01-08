@@ -134,6 +134,15 @@ public class DashboardController implements Initializable {
     private ScrollPane forgotCodePane;
 
     @FXML
+    private TextField forgotNewPSEmailTf;
+
+    @FXML
+    private Button forgotNewPSEnterBtn;
+
+    @FXML
+    private ScrollPane forgotNewPSPane;
+
+    @FXML
     private Button loginBtn;
 
     @FXML
@@ -592,11 +601,21 @@ public class DashboardController implements Initializable {
     }
 
     public void forgotCodeEnterBtnAction(ActionEvent actionEvent) {
+        forgotCodePane.setVisible(false);
+        forgotNewPSPane.setVisible(true);
     }
 
 
     public void forgotCodeBackOnMouse(MouseEvent mouseEvent) {
         forgotCodePane.setVisible(false);
         forgotPane.setVisible(true);
+    }
+
+    public void forgotNewPSEnterBtnAction(ActionEvent actionEvent) {
+    }
+
+    public void forgotNewPSBackOnMouse(MouseEvent mouseEvent) {
+        forgotNewPSPane.setVisible(false);
+        forgotCodePane.setVisible(true);
     }
 }
