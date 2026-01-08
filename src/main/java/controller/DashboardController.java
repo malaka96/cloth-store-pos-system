@@ -116,7 +116,19 @@ public class DashboardController implements Initializable {
     private ScrollPane dashboardPane;
 
     @FXML
+    private TextField forgotEmailTf;
+
+    @FXML
+    private ScrollPane forgotPane;
+
+    @FXML
+    private Button forgotSendBtn;
+
+    @FXML
     private Button loginBtn;
+
+    @FXML
+    private ScrollPane loginPane;
 
     @FXML
     private TextField loginEmailTf;
@@ -525,6 +537,15 @@ public class DashboardController implements Initializable {
 
         try {
             if (userService.isUserExisted(email, password)) {
+
+                loginPane.setVisible(false);
+                dashboardPane.setVisible(true);
+
+                dashboardBtn.setDisable(false);
+                customerBtn.setDisable(false);
+                productBtn.setDisable(false);
+                billingBtn.setDisable(false);
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Login success");
                 alert.setHeaderText(null);
@@ -544,6 +565,19 @@ public class DashboardController implements Initializable {
     }
 
     public void loginFPOnMouse(MouseEvent mouseEvent) {
+        loginPane.setVisible(false);
+        forgotPane.setVisible(true);
+    }
 
+
+    // ----------- forgot password page ----------
+
+    public void forgotSendBtnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void forgotBackBtnOnMouse(MouseEvent mouseEvent) {
+        forgotPane.setVisible(false);
+        loginPane.setVisible(true);
     }
 }

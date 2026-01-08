@@ -16,22 +16,22 @@
    <children>
       <AnchorPane layoutX="-22.0" prefHeight="706.0" prefWidth="222.0" style="-fx-background-radius: 20; -fx-background-color: white;">
          <children>
-            <Button fx:id="dashboardBtn" layoutX="56.0" layoutY="136.0" mnemonicParsing="false" onAction="#dashboardBtnAction" prefHeight="34.0" prefWidth="127.0" text="Dashboard">
+            <Button fx:id="dashboardBtn" disable="true" layoutX="56.0" layoutY="136.0" mnemonicParsing="false" onAction="#dashboardBtnAction" prefHeight="34.0" prefWidth="127.0" text="Dashboard">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="customerBtn" layoutX="56.0" layoutY="179.0" mnemonicParsing="false" onAction="#customerBtnAction" prefHeight="34.0" prefWidth="127.0" text="Customers">
+            <Button fx:id="customerBtn" disable="true" layoutX="56.0" layoutY="179.0" mnemonicParsing="false" onAction="#customerBtnAction" prefHeight="34.0" prefWidth="127.0" text="Customers">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="productBtn" layoutX="56.0" layoutY="221.0" mnemonicParsing="false" onAction="#productBtnAction" prefHeight="34.0" prefWidth="127.0" text="Products">
+            <Button fx:id="productBtn" disable="true" layoutX="56.0" layoutY="221.0" mnemonicParsing="false" onAction="#productBtnAction" prefHeight="34.0" prefWidth="127.0" text="Products">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="billingBtn" layoutX="56.0" layoutY="265.0" mnemonicParsing="false" onAction="#billingBtnAction" prefHeight="34.0" prefWidth="127.0" text="Billing ">
+            <Button fx:id="billingBtn" disable="true" layoutX="56.0" layoutY="265.0" mnemonicParsing="false" onAction="#billingBtnAction" prefHeight="34.0" prefWidth="127.0" text="Billing ">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -275,7 +275,7 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <ScrollPane fx:id="dashboardPane1" layoutX="222.0" layoutY="22.0" prefHeight="664.0" prefWidth="963.0">
+      <ScrollPane fx:id="loginPane" layoutX="222.0" layoutY="22.0" prefHeight="664.0" prefWidth="963.0">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="647.0" prefWidth="958.0">
                <children>
@@ -297,8 +297,29 @@
                   </Text>
                   <PasswordField fx:id="loginPasswordTf" layoutX="164.0" layoutY="328.0" prefHeight="26.0" prefWidth="326.0" />
                   <Button fx:id="loginBtn" layoutX="164.0" layoutY="374.0" mnemonicParsing="false" onAction="#loginBtnAction" prefHeight="26.0" prefWidth="327.0" text="Login" />
-                  <Text  fill="BLUE" layoutX="164.0" layoutY="426.0" onMouseClicked="#loginFPOnMouse" strokeType="OUTSIDE" strokeWidth="0.0" text="forget password" wrappingWidth="109.33674621582031" />
+                  <Text fill="BLUE" layoutX="165.0" layoutY="424.0" onMouseClicked="#loginFPOnMouse" strokeType="OUTSIDE" strokeWidth="0.0" text="forget password" wrappingWidth="90.13679504394531" />
                   <Text fill="BLUE" layoutX="304.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="create an account" textAlignment="RIGHT" wrappingWidth="187.7367706298828" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <ScrollPane fx:id="forgotPane" layoutX="222.0" layoutY="22.0" prefHeight="664.0" prefWidth="963.0" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="647.0" prefWidth="958.0">
+               <children>
+                  <Text layoutX="165.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password" wrappingWidth="264.7999755859375">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="forgotEmailTf" layoutX="164.0" layoutY="272.0" prefHeight="26.0" prefWidth="328.0" />
+                  <Text layoutX="165.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="325.33668518066406">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="forgotSendBtn" layoutX="164.0" layoutY="324.0" mnemonicParsing="false" onAction="#forgotSendBtnAction" prefHeight="26.0" prefWidth="327.0" text="Send" />
+                  <Text fill="BLUE" layoutX="164.0" layoutY="373.0" onMouseClicked="#forgotBackBtnOnMouse" strokeType="OUTSIDE" strokeWidth="0.0" text="back to login" wrappingWidth="109.33674621582031" />
                </children>
             </AnchorPane>
          </content>
